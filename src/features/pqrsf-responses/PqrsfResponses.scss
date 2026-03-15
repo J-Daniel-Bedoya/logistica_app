@@ -1,0 +1,277 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.pqrsf {
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    @include section-padding;
+  }
+
+  &__intro {
+    text-align: center;
+    @include centered-block($content-narrow-max);
+    margin-bottom: $spacing-2xl;
+
+    @include respond-to(md) {
+      margin-bottom: $spacing-3xl;
+    }
+
+    p {
+      color: $gray;
+      font-size: $font-size-sm;
+      line-height: 1.9;
+
+      @include respond-to(md) {
+        font-size: $font-size-md;
+      }
+    }
+  }
+
+  // Search
+  &__search-section {
+    @include centered-block($content-narrow-max);
+    margin-bottom: $spacing-2xl;
+
+    @include respond-to(md) {
+      margin-bottom: $spacing-3xl;
+    }
+  }
+
+  &__instructions {
+    text-align: center;
+    color: $gray;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-lg;
+
+    @include respond-to(md) {
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  &__year-tabs {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-lg;
+    flex-wrap: wrap;
+
+    @include respond-to(sm) {
+      gap: $spacing-sm;
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  &__year-tab {
+    padding: $spacing-xs $spacing-md;
+    border-radius: $radius-xl;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $gray;
+    background: $light-gray;
+    cursor: pointer;
+    border: none;
+    font-family: $font-primary;
+    transition: all $transition-base;
+
+    @include respond-to(sm) {
+      padding: $spacing-xs $spacing-lg;
+      font-size: $font-size-sm;
+    }
+
+    &:hover {
+      background: rgba($primary, 0.1);
+      color: $primary;
+    }
+
+    &--active {
+      background: $primary;
+      color: $white;
+
+      &:hover {
+        background: $primary-light;
+        color: $white;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__input-group {
+    display: flex;
+    gap: $spacing-xs;
+    width: 100%;
+    max-width: 500px;
+    flex-direction: column;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      gap: $spacing-sm;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    padding: $spacing-sm $spacing-md;
+    border: 2px solid $light-gray;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    transition: border-color $transition-fast;
+    font-family: $font-primary;
+
+    @include respond-to(md) {
+      padding: $spacing-sm $spacing-lg;
+      font-size: $font-size-base;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+    }
+  }
+
+  // New PQRSF
+  &__new {
+    text-align: center;
+    padding: $spacing-lg;
+    background: $off-white;
+    border-radius: $radius-md;
+    @include centered-block($content-narrow-max);
+
+    @include respond-to(md) {
+      padding: $spacing-2xl;
+      border-radius: $radius-lg;
+    }
+
+    h3 {
+      font-size: $font-size-base;
+      margin-bottom: $spacing-xs;
+
+      @include respond-to(md) {
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-sm;
+      }
+    }
+
+    > p {
+      color: $gray;
+      font-size: $font-size-sm;
+      margin-bottom: $spacing-lg;
+
+      @include respond-to(md) {
+        margin-bottom: $spacing-xl;
+      }
+    }
+  }
+
+  &__new-actions {
+    display: flex;
+    gap: $spacing-sm;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: $spacing-lg;
+
+    @include respond-to(sm) {
+      gap: $spacing-md;
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  // Contact Form
+  &__form-wrapper {
+    margin-top: $spacing-lg;
+    padding-top: $spacing-lg;
+    border-top: 1px solid $light-gray;
+    text-align: left;
+
+    @include respond-to(md) {
+      margin-top: $spacing-xl;
+      padding-top: $spacing-xl;
+    }
+  }
+
+  &__contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+
+    @include respond-to(md) {
+      gap: $spacing-lg;
+    }
+  }
+
+  &__field-row {
+    display: flex;
+    gap: $spacing-md;
+    flex-direction: column;
+
+    @include respond-to(md) {
+      flex-direction: row;
+      gap: $spacing-lg;
+
+      .pqrsf__field {
+        flex: 1;
+      }
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+
+    label {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-xs;
+      color: $primary;
+
+      @include respond-to(sm) {
+        font-size: $font-size-sm;
+      }
+    }
+
+    input,
+    select,
+    textarea {
+      padding: $spacing-sm $spacing-md;
+      border: 2px solid $light-gray;
+      border-radius: $radius-md;
+      font-size: $font-size-sm;
+      font-family: $font-primary;
+      background: $white;
+      transition: border-color $transition-fast;
+
+      @include respond-to(md) {
+        font-size: $font-size-base;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $primary;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  }
+
+  &__thanks {
+    text-align: center;
+    padding: $spacing-xl;
+
+    h4 {
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      color: $gray;
+      margin-bottom: $spacing-xl;
+    }
+  }
+}

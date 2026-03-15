@@ -1,0 +1,94 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.hero {
+  position: relative;
+  @include flex-center;
+  min-height: 350px;
+  background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+  background-size: cover;
+  background-position: center;
+  color: $white;
+  text-align: center;
+  padding: $spacing-2xl $spacing-md;
+
+  @include respond-to(sm) {
+    min-height: 400px;
+    padding: $spacing-3xl $spacing-lg;
+  }
+
+  @include respond-to(md) {
+    min-height: 500px;
+    padding: $spacing-4xl $spacing-lg;
+  }
+
+  &--overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba($primary-dark, 0.58) 0%, rgba($primary-dark, 0.78) 100%);
+  }
+
+  &__container {
+    @include container;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__content {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    color: $white;
+    margin-bottom: $spacing-md;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    @include respond-to(sm) {
+      font-size: $font-size-3xl;
+      margin-bottom: $spacing-lg;
+    }
+
+    @include respond-to(md) {
+      font-size: $font-size-4xl;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    max-width: 640px;
+    margin: 0 auto $spacing-xl;
+    color: rgba($white, 0.92);
+    line-height: 1.7;
+
+    @include respond-to(sm) {
+      font-size: $font-size-md;
+      margin-bottom: $spacing-2xl;
+    }
+
+    @include respond-to(md) {
+      font-size: $font-size-lg;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-sm;
+
+    .btn--outline {
+      color: $white;
+      border-color: rgba($white, 0.82);
+      background: rgba($white, 0.08);
+
+      &:hover {
+        background: $white;
+        color: $primary;
+      }
+    }
+  }
+}

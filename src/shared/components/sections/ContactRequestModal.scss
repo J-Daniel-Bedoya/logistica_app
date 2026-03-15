@@ -1,0 +1,176 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.contact-request-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: $spacing-md;
+  background: rgba($primary-dark, 0.72);
+
+  @include respond-to(md) {
+    align-items: center;
+    padding: $spacing-xl;
+  }
+
+  &__dialog {
+    position: relative;
+    width: min(100%, 760px);
+    max-height: min(100vh - 2rem, 760px);
+    overflow: auto;
+    background: $white;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-xl;
+    padding: $spacing-xl $spacing-lg;
+
+    @include respond-to(sm) {
+      padding: $spacing-xl;
+    }
+
+    @include respond-to(md) {
+      padding: $spacing-2xl;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: $spacing-md;
+    right: $spacing-md;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba($primary, 0.12);
+    border-radius: $radius-round;
+    background: $white;
+    color: $primary;
+    cursor: pointer;
+    transition:
+      background-color $transition-fast,
+      border-color $transition-fast,
+      color $transition-fast;
+
+    &:hover {
+      background: $off-white;
+      border-color: rgba($primary, 0.2);
+    }
+  }
+
+  &__header {
+    padding-right: $spacing-2xl;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__kicker {
+    margin: 0 0 $spacing-sm;
+    color: $secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+  }
+
+  h2 {
+    margin-bottom: $spacing-sm;
+    color: $primary;
+    font-family: $font-heading;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.05;
+  }
+
+  &__subtitle {
+    max-width: 48ch;
+    color: $gray;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__field-grid {
+    display: grid;
+    gap: $spacing-lg;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+
+    label {
+      color: $primary;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba($primary, 0.15);
+      border-radius: $radius-md;
+      background: $white;
+      padding: 0.9rem 1rem;
+      font-family: $font-primary;
+      font-size: $font-size-base;
+      color: $dark-gray;
+      transition:
+        border-color $transition-fast,
+        box-shadow $transition-fast;
+
+      &:focus {
+        outline: none;
+        border-color: rgba($primary, 0.45);
+        box-shadow: 0 0 0 3px rgba($secondary, 0.16);
+      }
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: $spacing-sm;
+
+    .btn {
+      justify-content: center;
+    }
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
+
+  &__thanks {
+    padding: $spacing-xl;
+    text-align: center;
+
+    h3 {
+      margin-bottom: $spacing-sm;
+      color: $primary;
+      font-family: $font-heading;
+      font-size: $font-size-xl;
+    }
+
+    p {
+      margin-bottom: $spacing-xl;
+      color: $gray;
+      line-height: 1.6;
+    }
+  }
+}

@@ -1,0 +1,93 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.floating-contact-actions {
+  position: fixed;
+  right: 0.75rem;
+  bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  z-index: 1300;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4375rem;
+
+  @include respond-to(sm) {
+    right: $spacing-lg;
+    bottom: $spacing-lg;
+    gap: $spacing-sm;
+  }
+
+  &--menu-open {
+    bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  @include respond-to(sm) {
+    &--menu-open {
+      bottom: 6rem;
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: $radius-round;
+    padding: 0;
+    box-shadow: $shadow-lg;
+    font-family: $font-primary;
+    font-size: 0.625rem;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color $transition-fast,
+      color $transition-fast,
+      box-shadow $transition-fast;
+
+    @include respond-to(sm) {
+      width: 62px;
+      height: 62px;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+
+    svg {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+
+      @include respond-to(sm) {
+        font-size: 1.5rem;
+      }
+    }
+
+    span {
+      line-height: 1;
+    }
+
+    &:hover {
+      box-shadow: $shadow-xl;
+    }
+
+    &--form {
+      background: $secondary;
+      color: $white;
+
+      &:hover {
+        background: $secondary-light;
+      }
+    }
+
+    &--whatsapp {
+      background: #25d366;
+      color: $white;
+
+      &:hover {
+        background: #1ea952;
+      }
+    }
+  }
+}

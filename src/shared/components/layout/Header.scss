@@ -1,0 +1,448 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: $white;
+  box-shadow: $shadow-md;
+  height: $header-height;
+
+  &__container {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    height: 100%;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    flex-shrink: 0;
+
+    img {
+      height: 42px;
+      width: auto;
+
+      @include respond-to(sm) {
+        height: 50px;
+      }
+
+      @include respond-to(lg) {
+        height: 55px;
+      }
+    }
+  }
+
+  &__logo-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+
+    @include respond-to(lg) {
+      display: none;
+    }
+  }
+
+  &__logo-text {
+    color: $primary;
+    font-family: $font-heading;
+    font-size: 1.125rem;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+  }
+
+  &__logo-subtext {
+    color: rgba($primary, 0.76);
+    font-size: 0.625rem;
+    font-weight: $font-weight-semibold;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    font-size: $font-size-lg;
+    color: $primary;
+    padding: 0;
+    background: rgba($primary, 0.04);
+    border: 1px solid rgba($primary, 0.08);
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition:
+      background-color $transition-fast,
+      border-color $transition-fast,
+      color $transition-fast;
+
+    &:hover {
+      color: $secondary;
+      border-color: rgba($secondary, 0.2);
+      background: rgba($secondary, 0.06);
+    }
+
+    @include respond-to(lg) {
+      display: none;
+    }
+  }
+
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba($primary-dark, 0.38);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1000;
+
+    @include respond-to(lg) {
+      display: none;
+    }
+  }
+
+  &__nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(360px, 100%);
+    background: $white;
+    flex-direction: column;
+    border-left: 1px solid rgba($primary, 0.08);
+    box-shadow: $shadow-xl;
+    overflow: hidden;
+    z-index: 1001;
+
+    &--open {
+      display: flex;
+    }
+
+    @include respond-to(lg) {
+      display: flex;
+      position: static;
+      width: auto;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: clamp(1rem, 1.8vw, 2rem);
+      margin-left: auto;
+      border-left: none;
+      padding: 0;
+      box-shadow: none;
+      overflow: visible;
+    }
+  }
+
+  &__mobile-panel {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    flex-direction: column;
+
+    @include respond-to(lg) {
+      display: contents;
+    }
+  }
+
+  &__mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-md;
+    padding: calc(#{$spacing-xl} + env(safe-area-inset-top, 0px)) $spacing-lg $spacing-lg;
+    border-bottom: 1px solid rgba($primary, 0.08);
+    background: $white;
+
+    @include respond-to(lg) {
+      display: none;
+    }
+  }
+
+  &__mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    min-width: 0;
+
+    img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+  }
+
+  &__mobile-brand-copy {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+
+    strong {
+      color: $primary;
+      font-size: 1rem;
+      line-height: 1.2;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  &__mobile-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: $radius-sm;
+    background: transparent;
+    color: $primary;
+    cursor: pointer;
+    transition:
+      color $transition-fast,
+      background-color $transition-fast;
+
+    &:hover {
+      color: $secondary;
+      background: rgba($secondary, 0.08);
+    }
+  }
+
+  &__mobile-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: $spacing-xs 0;
+
+    @include respond-to(lg) {
+      display: contents;
+      overflow: visible;
+      padding: 0;
+    }
+  }
+
+  &__nav-item {
+    position: relative;
+    border-bottom: 1px solid rgba($primary, 0.07);
+
+    @include respond-to(lg) {
+      border-bottom: none;
+      padding-bottom: 12px;
+      margin-bottom: -12px;
+    }
+
+    &--open {
+      .header__chevron {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-xs;
+    padding: 0.9375rem $spacing-lg;
+    color: $primary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    line-height: 1.35;
+    transition:
+      color $transition-fast,
+      background-color $transition-fast;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: $font-primary;
+    width: 100%;
+    text-align: left;
+
+    &:hover {
+      background: rgba($primary, 0.03);
+      color: $secondary;
+    }
+
+    &--active {
+      color: $secondary;
+      font-weight: $font-weight-semibold;
+      background: rgba($secondary, 0.06);
+    }
+
+    @include respond-to(lg) {
+      justify-content: flex-start;
+      padding: 0;
+      line-height: 1;
+      color: $dark-gray;
+      white-space: nowrap;
+      font-size: $font-size-xs;
+      background: none;
+
+      &.header__nav-link--active {
+        color: $secondary;
+        font-weight: $font-weight-semibold;
+      }
+    }
+
+    @include respond-to(xl) {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &__chevron {
+    font-size: $font-size-xs;
+    transition: transform $transition-fast;
+    flex-shrink: 0;
+  }
+
+  &__dropdown {
+    display: none;
+    background: rgba($primary, 0.02);
+    padding: $spacing-xs $spacing-md $spacing-md;
+    border-top: 1px solid rgba($primary, 0.06);
+
+    &--open {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include respond-to(lg) {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: calc(100% - 2px);
+      left: 0;
+      min-width: 280px;
+      padding: $spacing-xs 0;
+      border: 1px solid rgba($primary, 0.08);
+      border-radius: $radius-md;
+      box-shadow: $shadow-lg;
+      background: $white;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition:
+        opacity $transition-fast,
+        transform $transition-fast,
+        visibility $transition-fast;
+
+      &--open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__dropdown-link {
+    display: block;
+    padding: 0.8125rem $spacing-md;
+    color: $dark-gray;
+    font-size: $font-size-sm;
+    line-height: 1.45;
+    border-radius: $radius-sm;
+    transition:
+      background-color $transition-fast,
+      color $transition-fast;
+
+    &:first-child {
+      margin-bottom: $spacing-xs;
+      color: $primary;
+      font-weight: $font-weight-semibold;
+      background: rgba($white, 0.92);
+    }
+
+    &:hover {
+      background: rgba($white, 0.96);
+      color: $secondary;
+    }
+
+    &--active {
+      color: $secondary;
+      font-weight: $font-weight-semibold;
+      background: rgba($secondary, 0.08);
+    }
+
+    @include respond-to(lg) {
+      padding: $spacing-sm $spacing-lg;
+      border-radius: 0;
+
+      &:first-child {
+        padding-bottom: $spacing-md;
+        margin-bottom: $spacing-xs;
+        border-bottom: 1px solid rgba($primary, 0.08);
+        background: transparent;
+      }
+
+      &:hover {
+        background: $off-white;
+      }
+
+      &.header__dropdown-link--active {
+        background: rgba($secondary, 0.08);
+        color: $secondary;
+      }
+    }
+  }
+
+  &__mobile-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $spacing-sm;
+    padding: $spacing-md $spacing-lg $spacing-lg;
+    border-top: 1px solid rgba($primary, 0.08);
+    background: $white;
+
+    @include respond-to(lg) {
+      display: none;
+    }
+  }
+
+  &__mobile-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    min-height: 48px;
+    padding: 0 $spacing-md;
+    border-radius: $radius-md;
+    border: 1px solid rgba($secondary, 0.18);
+    background: rgba($secondary, 0.08);
+    color: $secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    white-space: nowrap;
+    transition:
+      background-color $transition-fast,
+      border-color $transition-fast,
+      color $transition-fast;
+
+    &:hover {
+      background: rgba($secondary, 0.12);
+      border-color: rgba($secondary, 0.26);
+    }
+
+    &--secondary {
+      border-color: rgba($primary, 0.18);
+      background: $primary;
+      color: $white;
+
+      &:hover {
+        background: $primary-light;
+        border-color: rgba($primary-light, 0.32);
+      }
+    }
+  }
+}
+

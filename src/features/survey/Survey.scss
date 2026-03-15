@@ -1,0 +1,154 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.survey {
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    @include section-padding;
+  }
+
+  &__intro {
+    text-align: center;
+    @include centered-block($content-narrow-max);
+    margin-bottom: $spacing-2xl;
+
+    @include respond-to(md) {
+      margin-bottom: $spacing-3xl;
+    }
+
+    p {
+      color: $gray;
+      font-size: $font-size-sm;
+      line-height: 1.8;
+      margin-bottom: $spacing-md;
+
+      @include respond-to(md) {
+        font-size: $font-size-md;
+      }
+    }
+  }
+
+  &__notice {
+    background: rgba($info, 0.1);
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    border-left: 3px solid $info;
+    font-size: $font-size-xs !important;
+
+    @include respond-to(sm) {
+      padding: $spacing-md $spacing-lg;
+      font-size: $font-size-sm !important;
+    }
+  }
+
+  // Form
+  &__form {
+    @include centered-block($content-narrow-max);
+  }
+
+  &__question {
+    margin-bottom: $spacing-xl;
+    padding-bottom: $spacing-xl;
+    border-bottom: 1px solid $light-gray;
+
+    @include respond-to(md) {
+      margin-bottom: $spacing-2xl;
+      padding-bottom: $spacing-2xl;
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    h3 {
+      font-size: $font-size-sm;
+      margin-bottom: $spacing-md;
+
+      @include respond-to(md) {
+        font-size: $font-size-base;
+        margin-bottom: $spacing-lg;
+      }
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+
+    @include respond-to(sm) {
+      gap: $spacing-sm;
+    }
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-xs $spacing-md;
+    border: 2px solid $light-gray;
+    border-radius: $radius-xl;
+    cursor: pointer;
+    transition: all $transition-base;
+    font-size: $font-size-xs;
+
+    @include respond-to(sm) {
+      gap: $spacing-sm;
+      padding: $spacing-sm $spacing-lg;
+      font-size: $font-size-sm;
+    }
+
+    input {
+      display: none;
+    }
+
+    &:hover {
+      border-color: $secondary;
+      background: rgba($secondary, 0.05);
+    }
+
+    &--selected {
+      border-color: $secondary;
+      background: rgba($secondary, 0.1);
+      color: $primary;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  &__submit {
+    text-align: center;
+    margin-top: $spacing-xl;
+  }
+
+  // Thanks
+  &__thanks {
+    text-align: center;
+    padding: $spacing-3xl 0;
+
+    @include respond-to(md) {
+      padding: $spacing-4xl 0;
+    }
+
+    h2 {
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-md;
+
+      @include respond-to(md) {
+        font-size: $font-size-2xl;
+      }
+    }
+
+    p {
+      color: $gray;
+      margin-bottom: $spacing-xl;
+      font-size: $font-size-sm;
+
+      @include respond-to(md) {
+        font-size: $font-size-md;
+      }
+    }
+  }
+}

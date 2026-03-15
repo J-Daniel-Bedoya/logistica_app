@@ -1,0 +1,320 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.services {
+  &__container {
+    @include container;
+  }
+
+  &__intro {
+    @include section-padding;
+    text-align: center;
+
+    p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: $gray;
+      font-size: $font-size-sm;
+      line-height: 1.8;
+
+      @include respond-to(md) {
+        font-size: $font-size-md;
+        line-height: 1.9;
+      }
+    }
+  }
+
+  &__resources {
+    @include section-padding;
+    background: $off-white;
+  }
+
+  &__resources-grid {
+    @include grid(1, $spacing-lg);
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__resource {
+    text-align: center;
+    padding: $spacing-md;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__resource-icon {
+    font-size: 2rem;
+    color: $secondary;
+    margin-bottom: $spacing-md;
+
+    @include respond-to(md) {
+      font-size: 2.5rem;
+      margin-bottom: $spacing-lg;
+    }
+  }
+
+  &__resource h3 {
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-xs;
+
+    @include respond-to(md) {
+      font-size: $font-size-base;
+      margin-bottom: $spacing-sm;
+    }
+  }
+
+  &__resource p {
+    color: $gray;
+    font-size: $font-size-sm;
+    line-height: 1.6;
+    margin-bottom: $spacing-md;
+  }
+
+  &__tips {
+    @include section-padding;
+  }
+
+  &__tips-grid {
+    @include grid(1, $spacing-md);
+    @include centered-block($content-medium-max);
+
+    @include respond-to(md) {
+      gap: $spacing-lg;
+    }
+  }
+
+  &__tip {
+    display: flex;
+    gap: $spacing-md;
+    padding: $spacing-md $spacing-lg;
+    background: $white;
+    border-radius: $radius-md;
+    box-shadow: $shadow-sm;
+    border-left: 3px solid $secondary;
+
+    p {
+      color: $gray;
+      font-size: $font-size-sm;
+      line-height: 1.7;
+    }
+  }
+
+  &__tip-number {
+    @include flex-center;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: $radius-round;
+    background: $secondary;
+    color: $white;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-xs;
+    flex-shrink: 0;
+  }
+
+  &__safety {
+    padding: 0 0 $spacing-3xl;
+  }
+
+  &__safety-intro {
+    @include centered-block($content-medium-max);
+    margin-bottom: $spacing-xl;
+    text-align: center;
+
+    p {
+      color: $gray;
+      font-size: $font-size-sm;
+      line-height: 1.8;
+
+      @include respond-to(md) {
+        font-size: $font-size-md;
+      }
+    }
+  }
+
+  &__safety-links {
+    display: grid;
+    gap: 1px;
+    overflow: hidden;
+    border-radius: $radius-lg;
+    background: rgba($primary, 0.16);
+    box-shadow: $shadow-md;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__safety-link {
+    display: flex;
+    min-height: 168px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-xl $spacing-lg;
+    text-align: center;
+    background: linear-gradient(180deg, #1d2bf0 0%, #1724d6 100%);
+    transition:
+      background-color $transition-fast,
+      transform $transition-fast;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &--qustodio {
+      .services__safety-brand {
+        color: #53d3a8;
+      }
+    }
+
+    &--securekids {
+      .services__safety-brand {
+        color: $white;
+      }
+    }
+
+    &--kidoz {
+      .services__safety-brand {
+        color: #111827;
+      }
+    }
+  }
+
+  &__safety-brand {
+    margin-bottom: $spacing-sm;
+    font-family: $font-heading;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1;
+    letter-spacing: 0.01em;
+  }
+
+  &__safety-description {
+    max-width: 26ch;
+    color: rgba($white, 0.82);
+    font-size: $font-size-sm;
+    line-height: 1.6;
+  }
+
+  &__videos {
+    @include section-padding;
+    background: $off-white;
+  }
+
+  &__video-tabs {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-xl;
+    flex-wrap: wrap;
+
+    @include respond-to(sm) {
+      gap: $spacing-sm;
+      margin-bottom: $spacing-2xl;
+    }
+  }
+
+  &__video-tab {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-xs $spacing-md;
+    border-radius: $radius-xl;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $gray;
+    background: $white;
+    transition: all $transition-base;
+    cursor: pointer;
+    border: none;
+    font-family: $font-primary;
+
+    @include respond-to(sm) {
+      padding: $spacing-sm $spacing-lg;
+      font-size: $font-size-sm;
+    }
+
+    svg {
+      font-size: $font-size-xs;
+    }
+
+    &:hover {
+      background: rgba($primary, 0.1);
+      color: $primary;
+    }
+
+    &--active {
+      background: $primary;
+      color: $white;
+
+      &:hover {
+        background: $primary-light;
+        color: $white;
+      }
+    }
+  }
+
+  &__video-grid {
+    @include grid(1, $spacing-lg);
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__video-item {
+    background: $white;
+    border-radius: $radius-md;
+    overflow: hidden;
+    box-shadow: $shadow-md;
+    transition: transform $transition-base, box-shadow $transition-base;
+
+    @include respond-to(md) {
+      border-radius: $radius-lg;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-lg;
+    }
+
+    h4 {
+      padding: $spacing-sm $spacing-md;
+      font-size: $font-size-xs;
+      color: $primary;
+      line-height: 1.5;
+
+      @include respond-to(md) {
+        padding: $spacing-md $spacing-lg;
+        font-size: $font-size-sm;
+      }
+    }
+  }
+
+  &__video-embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+}

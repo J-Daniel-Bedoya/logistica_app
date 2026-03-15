@@ -1,0 +1,725 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.about {
+  &__hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: clamp(390px, 50vw, 560px);
+    padding: clamp(4rem, 6.5vw, 5.25rem) 0 clamp(1.5rem, 3.5vw, 2.75rem);
+    background:
+      linear-gradient(92deg, rgba($primary-dark, 0.94) 0%, rgba($primary, 0.84) 36%, rgba($primary, 0.58) 68%, rgba($primary-dark, 0.76) 100%),
+      linear-gradient(180deg, rgba($primary-dark, 0.08) 0%, rgba($primary-dark, 0.4) 100%),
+      url('/assets/uploads/2024/06/Imagen-23-Enderezada.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center, center, 52% center;
+    overflow: hidden;
+    isolation: isolate;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba($white, 0.03) 0%, rgba($primary-dark, 0) 24%, rgba($primary-dark, 0.28) 100%);
+      pointer-events: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: clamp(3rem, 8vw, 5.5rem);
+      background: linear-gradient(180deg, rgba($primary-dark, 0) 0%, rgba($primary-dark, 0.22) 100%);
+      pointer-events: none;
+    }
+
+    @media (max-width: 767px) {
+      min-height: 400px;
+      padding: 4.25rem 0 1.5rem;
+      background-position: center, center, 62% center;
+    }
+
+    @include respond-to(md) {
+      min-height: 500px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__hero-panel {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: $spacing-xl;
+    width: 100%;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    background: linear-gradient(180deg, rgba($primary-dark, 0.48) 0%, rgba($primary-dark, 0.24) 100%);
+    border: 1px solid rgba($white, 0.14);
+    border-radius: $radius-lg;
+    box-shadow: 0 16px 40px rgba($primary-dark, 0.22);
+  }
+
+  &__hero-copy {
+    max-width: 42rem;
+
+    h1 {
+      margin: 0 0 $spacing-md;
+      color: $white;
+      font-family: $font-heading;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: $font-weight-bold;
+      letter-spacing: -0.04em;
+      line-height: 0.96;
+      max-width: 10ch;
+      text-wrap: balance;
+
+      @include respond-to(md) {
+        max-width: none;
+        white-space: nowrap;
+      }
+    }
+
+    p {
+      margin: 0;
+      max-width: 38rem;
+      color: rgba($white, 0.9);
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      line-height: 1.7;
+      text-wrap: pretty;
+    }
+  }
+
+  &__hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+    color: rgba($white, 0.82);
+    font-size: 0.875rem;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.04em;
+
+    &::before {
+      content: '';
+      width: 2.75rem;
+      height: 2px;
+      border-radius: 999px;
+      background: $secondary;
+      box-shadow: 0 0 0 4px rgba($secondary, 0.14);
+    }
+  }
+
+  &__hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $spacing-md;
+    padding-top: $spacing-lg;
+    border-top: 1px solid rgba($white, 0.12);
+
+    @media (max-width: 767px) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  &__hero-highlight {
+    min-width: 0;
+    padding: $spacing-lg;
+    background: linear-gradient(180deg, rgba($white, 0.08) 0%, rgba($white, 0.04) 100%);
+    border: 1px solid rgba($white, 0.1);
+    border-radius: $radius-md;
+
+    span {
+      display: block;
+      margin-bottom: $spacing-sm;
+      color: rgba($white, 0.7);
+      font-size: 0.8125rem;
+      font-weight: $font-weight-semibold;
+    }
+
+    strong {
+      display: block;
+      margin-bottom: $spacing-sm;
+      color: $white;
+      font-family: $font-heading;
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
+      line-height: 1.1;
+    }
+
+    p {
+      margin: 0;
+      color: rgba($white, 0.82);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      max-width: 28ch;
+    }
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__history {
+    padding: $spacing-2xl 0;
+
+    @include respond-to(sm) {
+      padding: $spacing-3xl 0;
+    }
+
+    @include respond-to(md) {
+      padding: 5rem 0 $spacing-4xl;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__hero-panel {
+      padding: 1.25rem;
+    }
+
+    &__hero-copy h1 {
+      max-width: 8ch;
+      font-size: clamp(2.2rem, 12vw, 3.1rem);
+    }
+
+    &__hero-copy p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    &__hero-highlight {
+      padding: $spacing-md;
+    }
+  }
+
+  &__history-content {
+    display: grid;
+    gap: $spacing-lg;
+  }
+
+  &__history-layout {
+    display: grid;
+    gap: $spacing-xl;
+    align-items: start;
+
+    @include respond-to(lg) {
+      grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.75fr);
+    }
+  }
+
+  &__history-block {
+    padding: clamp(1.25rem, 2vw, 2rem);
+    background: $white;
+    border: 1px solid rgba($primary, 0.08);
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+
+    h3 {
+      margin: 0 0 $spacing-lg;
+      color: $primary;
+      font-family: $font-heading;
+      font-size: clamp(1.3rem, 2vw, 1.7rem);
+      line-height: 1.2;
+    }
+  }
+
+  &__history-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+    color: $gray;
+    font-size: 0.8125rem;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.05em;
+
+    &::before {
+      content: '';
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 999px;
+      background: rgba($secondary, 0.18);
+      border: 2px solid $secondary;
+    }
+  }
+
+  &__history-text {
+    p {
+      color: $gray;
+      font-size: $font-size-sm;
+      line-height: 1.9;
+      margin-bottom: $spacing-md;
+
+      @include respond-to(md) {
+        font-size: $font-size-base;
+        margin-bottom: $spacing-lg;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__history-summary {
+    @include respond-to(lg) {
+      position: sticky;
+      top: calc($header-height + $spacing-lg);
+    }
+  }
+
+  &__history-summary-card {
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    background: linear-gradient(180deg, rgba($primary, 0.04) 0%, rgba($primary, 0.01) 100%);
+    border: 1px solid rgba($primary, 0.1);
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+
+    h3 {
+      margin: 0 0 $spacing-md;
+      color: $primary;
+      font-family: $font-heading;
+      font-size: clamp(1.25rem, 2vw, 1.6rem);
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0 0 $spacing-xl;
+      color: $gray;
+      font-size: $font-size-sm;
+      line-height: 1.8;
+    }
+  }
+
+  &__history-summary-label {
+    display: inline-block;
+    margin-bottom: $spacing-md;
+    color: $secondary;
+    font-size: 0.8125rem;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.05em;
+  }
+
+  &__history-facts {
+    display: grid;
+    gap: $spacing-md;
+    margin: 0;
+  }
+
+  &__history-fact {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: $spacing-md;
+    align-items: baseline;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid rgba($primary, 0.08);
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    dt {
+      margin: 0;
+      color: $gray;
+      font-size: $font-size-sm;
+    }
+
+    dd {
+      margin: 0;
+      color: $primary;
+      font-family: $font-heading;
+      font-size: $font-size-md;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  // Gallery
+  &__gallery {
+    @include section-padding;
+    background: linear-gradient(180deg, $off-white 0%, rgba($white, 0.92) 100%);
+  }
+
+  &__gallery-layout {
+    display: grid;
+    gap: $spacing-lg;
+
+    @include respond-to(md) {
+      gap: $spacing-xl;
+    }
+  }
+
+  &__gallery-feature {
+    min-width: 0;
+  }
+
+  &__gallery-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: $spacing-lg;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(md) {
+      gap: $spacing-xl;
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__gallery-item {
+    min-width: 0;
+  }
+
+  &__gallery-figure {
+    margin: 0;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    background: $primary-dark;
+    border: 1px solid rgba($primary, 0.1);
+    border-radius: $radius-lg;
+    overflow: hidden;
+    box-shadow: 0 10px 26px rgba($primary-dark, 0.12);
+    transition:
+      transform $transition-fast,
+      box-shadow $transition-fast,
+      border-color $transition-fast;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 34px rgba($primary-dark, 0.16);
+      border-color: rgba($secondary, 0.28);
+
+      .about__gallery-media img {
+        transform: scale(1.04);
+      }
+    }
+  }
+
+  &__gallery-figure--feature {
+    aspect-ratio: 16 / 10;
+
+    @include respond-to(md) {
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  &__gallery-figure--standard {
+    aspect-ratio: 4 / 3;
+  }
+
+  &__gallery-media {
+    position: absolute;
+    inset: 0;
+    background: $light-gray;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform $transition-base;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba($primary-dark, 0.04) 0%, rgba($primary-dark, 0.18) 38%, rgba($primary-dark, 0.78) 100%),
+        linear-gradient(90deg, rgba($primary-dark, 0.18) 0%, rgba($primary-dark, 0) 48%);
+      pointer-events: none;
+    }
+  }
+
+  &__gallery-copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: $spacing-sm;
+    width: 100%;
+    min-height: 100%;
+    padding: $spacing-lg;
+
+    @include respond-to(md) {
+      padding: $spacing-xl;
+    }
+
+    h3 {
+      color: $white;
+      font-family: $font-heading;
+      font-size: clamp(1.3rem, 2vw, 1.85rem);
+      font-weight: $font-weight-semibold;
+      line-height: 1.15;
+      margin: 0;
+      max-width: 16ch;
+      text-wrap: balance;
+    }
+
+    p {
+      color: rgba($white, 0.88);
+      font-size: $font-size-sm;
+      line-height: 1.7;
+      margin: 0;
+      max-width: 34ch;
+
+      @include respond-to(md) {
+        font-size: $font-size-base;
+      }
+    }
+  }
+
+  &__gallery-copy--feature {
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+
+    h3 {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      max-width: 12ch;
+    }
+
+    p {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      max-width: 38ch;
+    }
+  }
+
+  &__gallery-copy--standard {
+    h3 {
+      font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+      max-width: 14ch;
+    }
+
+    p {
+      max-width: 30ch;
+    }
+  }
+
+  // Offices
+  &__offices {
+    @include section-padding;
+  }
+
+  &__offices-grid {
+    @include grid(1, $spacing-lg);
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__office {
+    text-align: center;
+    padding: $spacing-md;
+
+    h3 {
+      font-size: $font-size-sm;
+      margin-bottom: $spacing-md;
+      color: $primary;
+
+      @include respond-to(md) {
+        font-size: $font-size-md;
+        margin-bottom: $spacing-lg;
+      }
+    }
+  }
+
+  &__office-info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: $spacing-sm;
+      color: $gray;
+      font-size: $font-size-xs;
+
+      @include respond-to(sm) {
+        font-size: $font-size-sm;
+      }
+
+      svg {
+        color: $secondary;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  // Mission & Vision
+  &__mv {
+    @include section-padding;
+    background: $off-white;
+  }
+
+  &__mv-grid {
+    @include grid(1, $spacing-2xl);
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-3xl;
+    }
+  }
+
+  &__mv-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: $radius-md;
+    margin-bottom: $spacing-lg;
+    box-shadow: $shadow-md;
+
+    @include respond-to(md) {
+      height: 250px;
+      border-radius: $radius-lg;
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  &__mv-item p {
+    color: $gray;
+    font-size: $font-size-sm;
+    line-height: 1.8;
+  }
+
+  // Values
+  &__values {
+    @include section-padding;
+  }
+
+  &__values-grid {
+    @include grid(2, $spacing-md);
+    margin-bottom: $spacing-xl;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(5, 1fr);
+      margin-bottom: $spacing-2xl;
+    }
+  }
+
+  &__values-layout {
+    display: grid;
+    gap: $spacing-xl;
+    align-items: start;
+
+    @include respond-to(lg) {
+      grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr);
+      gap: $spacing-2xl;
+    }
+  }
+
+  &__value {
+    text-align: center;
+    padding: $spacing-sm;
+
+    @include respond-to(md) {
+      padding: $spacing-md;
+    }
+  }
+
+  &__value-icon {
+    @include flex-center;
+    width: 50px;
+    height: 50px;
+    border-radius: $radius-round;
+    background: rgba($secondary, 0.1);
+    color: $secondary;
+    font-size: $font-size-lg;
+    margin: 0 auto $spacing-sm;
+
+    @include respond-to(md) {
+      width: 60px;
+      height: 60px;
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-md;
+    }
+  }
+
+  &__value h4 {
+    font-size: $font-size-xs;
+    color: $primary;
+
+    @include respond-to(sm) {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &__values-intro {
+    padding: clamp(1.5rem, 2.6vw, 2rem);
+    background: linear-gradient(180deg, rgba($primary, 0.04) 0%, rgba($primary, 0.01) 100%);
+    border: 1px solid rgba($primary, 0.1);
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+
+    h3 {
+      margin: 0 0 $spacing-md;
+      color: $primary;
+      font-family: $font-heading;
+      font-size: clamp(1.25rem, 2vw, 1.7rem);
+      line-height: 1.2;
+      max-width: 18ch;
+    }
+
+    p {
+      margin: 0;
+      color: $gray;
+      font-size: $font-size-sm;
+      line-height: 1.8;
+      max-width: 34ch;
+    }
+  }
+
+  &__values-label {
+    display: inline-block;
+    margin-bottom: $spacing-md;
+    color: $secondary;
+    font-size: 0.8125rem;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.05em;
+  }
+
+  &__values-description {
+    background: $white;
+    padding: clamp(1.5rem, 2.6vw, 2.25rem);
+    border-radius: $radius-lg;
+    border: 1px solid rgba($primary, 0.08);
+    box-shadow: $shadow-sm;
+
+    @include respond-to(md) {
+      padding: $spacing-2xl;
+    }
+
+    p {
+      color: $gray;
+      font-size: $font-size-sm;
+      line-height: 1.8;
+      margin: 0 0 $spacing-lg;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      @include respond-to(md) {
+        font-size: $font-size-base;
+        line-height: 1.9;
+      }
+    }
+  }
+}

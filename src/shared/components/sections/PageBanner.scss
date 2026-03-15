@@ -1,0 +1,43 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.page-banner {
+  background: linear-gradient(135deg, $primary 0%, $primary-light 100%);
+  color: $white;
+  padding: $spacing-2xl 0;
+  text-align: center;
+
+  @include respond-to(sm) {
+    padding: $spacing-3xl 0;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  h1 {
+    font-size: $font-size-xl;
+    color: $white;
+    margin-bottom: $spacing-xs;
+
+    @include respond-to(sm) {
+      font-size: $font-size-2xl;
+      margin-bottom: $spacing-sm;
+    }
+
+    @include respond-to(md) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  p {
+    font-size: $font-size-sm;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+
+    @include respond-to(md) {
+      font-size: $font-size-md;
+    }
+  }
+}

@@ -1,0 +1,150 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.plans {
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    @include section-padding;
+  }
+
+  &__intro {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto $spacing-xl;
+    color: $gray;
+    font-size: $font-size-sm;
+    line-height: 1.8;
+
+    @include respond-to(md) {
+      font-size: $font-size-md;
+      margin-bottom: $spacing-2xl;
+    }
+  }
+
+  // Tabs
+  &__tabs {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-xl;
+    flex-wrap: wrap;
+
+    @include respond-to(sm) {
+      gap: $spacing-sm;
+      margin-bottom: $spacing-2xl;
+    }
+  }
+
+  &__tab {
+    padding: $spacing-xs $spacing-md;
+    border-radius: $radius-xl;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $gray;
+    background: $light-gray;
+    transition: all $transition-base;
+
+    @include respond-to(sm) {
+      padding: $spacing-sm $spacing-xl;
+      font-size: $font-size-sm;
+    }
+
+    &:hover {
+      background: rgba($primary, 0.1);
+      color: $primary;
+    }
+
+    &--active {
+      background: $primary;
+      color: $white;
+
+      &:hover {
+        background: $primary-light;
+        color: $white;
+      }
+    }
+  }
+
+  // Grid
+  &__grid {
+    @include grid(1, $spacing-lg);
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  // Card
+  &__card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 2px solid $light-gray;
+
+    h3 {
+      font-size: $font-size-sm;
+
+      @include respond-to(sm) {
+        font-size: $font-size-md;
+      }
+    }
+  }
+
+  &__card-icon {
+    @include flex-center;
+    width: 42px;
+    height: 42px;
+    border-radius: $radius-round;
+    background: rgba($secondary, 0.1);
+    color: $secondary;
+    font-size: $font-size-lg;
+    flex-shrink: 0;
+  }
+
+  // List
+  &__list {
+    flex: 1;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__item {
+    @include flex-between;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid $light-gray;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__speed {
+    font-weight: $font-weight-semibold;
+    color: $primary;
+    font-size: $font-size-sm;
+  }
+
+  &__price {
+    font-weight: $font-weight-bold;
+    color: $secondary;
+    font-size: $font-size-base;
+
+    @include respond-to(md) {
+      font-size: $font-size-md;
+    }
+  }
+}
