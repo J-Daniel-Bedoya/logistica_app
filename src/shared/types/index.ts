@@ -7,8 +7,9 @@ export interface NavItem {
 }
 
 export interface ServicePlan {
-  speed: string;
+  label: string;
   price: string;
+  detail?: string;
 }
 
 export interface PlanCategory {
@@ -16,6 +17,7 @@ export interface PlanCategory {
   location: string;
   type: string;
   plans: ServicePlan[];
+  note?: string;
 }
 
 export interface Office {

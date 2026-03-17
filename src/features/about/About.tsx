@@ -135,7 +135,7 @@ const historyBlocks = [
     kicker: 'Consolidación',
     title: 'Afiliación con Tevecom y nacimiento de la empresa',
     paragraphs: [
-      'Fue entonces cuando se contactaron con el señor Sergio Restrepo Valderrama, gerente de Tevecom S.A.S, quien a través de la marca Cablemio comercializa conexiones de parabólica en el ámbito nacional, con el fin de afiliarse como sucursal en esos lugares donde se tenían las asociaciones.',
+      'Fue entonces cuando se contactaron con el señor Sergio Restrepo Valderrama, gerente de Tevecom S.A.S, quien a través de la marca TV Colombia comercializa conexiones de parabólica en el ámbito nacional, con el fin de afiliarse como sucursal en esos lugares donde se tenían las asociaciones.',
       'Y así, en el año 2012 se configura Logística Integral Satelital S.A.S, creada por el señor Ricardo Arturo Vásquez Ríos como gerente y la señora Ruby Arenas como subgerente. Desde el año 2012 se legalizó la afiliación con Tevecom y continúa vigente hasta hoy.',
     ],
   },
@@ -152,7 +152,7 @@ const historyBlocks = [
     kicker: 'Actualidad',
     title: 'Operación vigente y cobertura',
     paragraphs: [
-      'En la actualidad la empresa funciona como sucursal de Cablemio en los municipios de Armenia, Heliconia, San Jerónimo y Sopetrán. Sin embargo, su principal objetivo es la comercialización de soluciones de comunicación a través del acceso a internet.',
+      'En la actualidad la empresa funciona como sucursal de TV Colombia en los municipios de Armenia, Heliconia, San Jerónimo y Sopetrán. Sin embargo, su principal objetivo es la comercialización de soluciones de comunicación a través del acceso a internet.',
       'Hoy ya cuenta con 16 empleados y 1.323 suscriptores, los cuales se clasifican en los municipios de Palmitas, Sopetrán, San Jerónimo, Heliconia, Armenia, Ebéjico, Sevilla, Betulia, San Antonio, Titiribí y Anzá.',
     ],
   },
