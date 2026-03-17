@@ -105,7 +105,7 @@ export default function Header({ onMobileMenuChange }: HeaderProps) {
     <header className="header" ref={headerRef}>
       <div className="header__container">
         <Link to="/" className="header__logo">
-          <img src="/assets/uploads/2021/03/logo.png" alt="Logistica Integral Satelital" />
+          <img src="/assets/brands/lis/logo.png" alt="Logistica Integral Satelital" />
           <span className="header__logo-copy">
             <strong className="header__logo-text">LIS</strong>
             <small className="header__logo-subtext">Logistica Integral Satelital</small>
@@ -135,7 +135,7 @@ export default function Header({ onMobileMenuChange }: HeaderProps) {
           <div className="header__mobile-panel">
             <div className="header__mobile-header">
               <div className="header__mobile-brand">
-                <img src="/assets/uploads/2021/03/logo.png" alt="Logistica Integral Satelital" />
+                <img src="/assets/brands/lis/logo.png" alt="Logistica Integral Satelital" />
                 <div className="header__mobile-brand-copy">
                   <strong>Logistica Integral Satelital</strong>
                 </div>

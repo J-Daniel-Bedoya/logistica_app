@@ -9,25 +9,8 @@ import {
 } from 'react-icons/fa';
 import SectionTitle from '@/shared/components/ui/SectionTitle';
 import Card from '@/shared/components/ui/Card';
+import { paymentPoints } from '@/features/contact/contact.data';
 import './About.scss';
-
-const offices = [
-  {
-    name: 'Sede principal - Sopetrán',
-    phone: '604 854 15 05 - 310 593 04 04',
-    address: 'Carrera 13 N. 9 - 45',
-  },
-  {
-    name: 'San Jerónimo',
-    phone: '604 858 35 85 - 322 770 83 19',
-    address: 'Carrera 21 N. 11 - 53, Piso 2',
-  },
-  {
-    name: 'Armenia Mantequilla',
-    phone: '310 410 09 80',
-    address: 'Calle 10 N. 8 - 36, Piso 3',
-  },
-];
 
 const values = [
   { icon: <FaStar />, title: 'Calidad en el servicio' },
@@ -109,61 +92,30 @@ const heroHighlights = [
   },
   {
     label: 'Atención cercana',
-    value: '3 sedes',
-    description: 'Servicio local con acompañamiento técnico y respuesta directa al usuario.',
+    value: '5 sedes',
+    description: 'Puntos con secretaria y horario de atención para acompañar a cada usuario.',
   },
 ];
 
 const historyBlocks = [
   {
-    kicker: 'Base operativa',
-    title: 'Servicio, sede principal y presencia local',
+    kicker: 'Historia',
+    title: 'Origen y evolución de LIS',
     paragraphs: [
-      'Logística Integral Satelital S.A.S tiene como actividad principal la instalación de sistemas de internet alámbricos y pertenece al sector terciario de la economía por ser prestadora de servicios.',
-      'Su sede principal se encuentra ubicada en el municipio de Sopetrán, en la dirección Carrera 13 # 9-45, 2do piso, y cuenta con otras dos (2) sedes de atención al cliente en la subregión de occidente, en los municipios de San Jerónimo y Heliconia.',
-    ],
-  },
-  {
-    kicker: 'Origen',
-    title: 'Antecedentes y transición del sector',
-    paragraphs: [
-      'Inicialmente el señor Ricardo Arturo Vásquez Ríos (actual gerente) manejó dos (2) asociaciones de televisión en la subregión de occidente, en los municipios de Armenia Mantequilla y Heliconia bajo el nombre de Helicvisión, y en Sopetrán como Parabólica Sol de Occidente.',
-      'Dichas sociedades quedaron liquidadas tras entrar en vigencia la Ley 1507 de 2012, en la cual nace la Agencia Nacional de Televisión (ANTV) con el objetivo de regular las conexiones de televisión, generando así mayor eficiencia en el sector. Esto trajo consigo la obligación de adquirir licencias y permisos costosos que dichas asociaciones no lograron cubrir en su tiempo.',
-    ],
-  },
-  {
-    kicker: 'Consolidación',
-    title: 'Afiliación con Tevecom y nacimiento de la empresa',
-    paragraphs: [
-      'Fue entonces cuando se contactaron con el señor Sergio Restrepo Valderrama, gerente de Tevecom S.A.S, quien a través de la marca TV Colombia comercializa conexiones de parabólica en el ámbito nacional, con el fin de afiliarse como sucursal en esos lugares donde se tenían las asociaciones.',
-      'Y así, en el año 2012 se configura Logística Integral Satelital S.A.S, creada por el señor Ricardo Arturo Vásquez Ríos como gerente y la señora Ruby Arenas como subgerente. Desde el año 2012 se legalizó la afiliación con Tevecom y continúa vigente hasta hoy.',
-    ],
-  },
-  {
-    kicker: 'Crecimiento',
-    title: 'Expansión del servicio de internet',
-    paragraphs: [
-      'Más tarde, en el año 2015, se decide emprender una nueva línea de negocio: las conexiones alámbricas de internet. Se comenzó ofreciendo este servicio en el municipio de Sopetrán, principalmente en las zonas rurales donde la empresa UNE EPM Comunicaciones no tenía cobertura.',
-      'Más adelante, a mediados del 2016, se amplía la cobertura hasta el municipio de San Jerónimo y se abre una nueva oficina de apoyo en atención al cliente y asistencia técnica especializada.',
-      'En el 2017 se decide ofrecer el servicio de internet en los municipios de Titiribí, Armenia y Heliconia, lo cual se llevó a cabo a través de alianzas que permitieran disponer de puntos de recaudo y de personal técnico. Finalmente, desde el año 2018 se extiende el área de cobertura a Ebéjico y Anzá.',
-    ],
-  },
-  {
-    kicker: 'Actualidad',
-    title: 'Operación vigente y cobertura',
-    paragraphs: [
-      'En la actualidad la empresa funciona como sucursal de TV Colombia en los municipios de Armenia, Heliconia, San Jerónimo y Sopetrán. Sin embargo, su principal objetivo es la comercialización de soluciones de comunicación a través del acceso a internet.',
-      'Hoy ya cuenta con 16 empleados y 1.323 suscriptores, los cuales se clasifican en los municipios de Palmitas, Sopetrán, San Jerónimo, Heliconia, Armenia, Ebéjico, Sevilla, Betulia, San Antonio, Titiribí y Anzá.',
+      'Logística Integral Satelital S.A.S. fue creada en 2012 por Ricardo Arturo Vásquez Ríos en Sopetrán. En sus inicios, la empresa estuvo enfocada principalmente en servicios de televisión.',
+      'Con la evolución del sector y las necesidades de la región, en 2016 LIS inició la transición hacia el servicio de internet, ampliando su propuesta de conectividad para hogares y negocios.',
+      'Esta transición permitió fortalecer la operación de la empresa y responder con mayor alcance a las necesidades de conectividad en la región.',
+      'Desde entonces, LIS ha consolidado un servicio más completo, combinando experiencia, cercanía y soporte para sus usuarios.',
+      'Hoy la empresa integra servicios de televisión e internet con atención cercana y presencia en varios municipios del occidente antioqueño.',
     ],
   },
 ];
 
 const historyFacts = [
   { label: 'Fundación', value: '2012' },
-  { label: 'Sedes de atención', value: '3' },
-  { label: 'Empleados', value: '16' },
-  { label: 'Suscriptores', value: '1.323' },
-  { label: 'Cobertura', value: '11 municipios' },
+  { label: 'Inicio en internet', value: '2016' },
+  { label: 'Origen', value: 'Sopetrán' },
+  { label: 'Servicios', value: 'TV e internet' },
 ];
 
 const valuesNarrative = [
@@ -224,10 +176,10 @@ export default function About() {
             <aside className="about__history-summary" aria-label="Datos clave de la empresa">
               <div className="about__history-summary-card">
                 <span className="about__history-summary-label">Datos clave</span>
-                <h3>Presencia empresarial con operación regional</h3>
+                <h3>De la televisión al internet regional</h3>
                 <p>
-                  La historia de la empresa combina origen local, expansión progresiva y una
-                  operación cercana al usuario en municipios del occidente antioqueño.
+                  LIS nació en Sopetrán, comenzó con televisión y evolucionó hacia internet para
+                  responder mejor a las necesidades de conectividad de la región.
                 </p>
 
                 <dl className="about__history-facts">
@@ -295,12 +247,17 @@ export default function About() {
 
       <section className="about__offices">
         <div className="about__container">
-          <SectionTitle title="Nuestras Sedes" centered />
+          <SectionTitle
+            title="Nuestras Sedes"
+            subtitle="Sopetrán, San Jerónimo, Ebéjico, Heliconia y Altamira cuentan con secretaria y horario de atención."
+            centered
+          />
           <div className="about__offices-grid">
-            {offices.map((office) => (
+            {paymentPoints.map((office) => (
               <Card key={office.name}>
                 <div className="about__office">
                   <h3>{office.name}</h3>
+                  {office.note && <p className="about__office-note">{office.note}</p>}
                   <div className="about__office-info">
                     <p>
                       <FaPhone /> {office.phone}
@@ -309,6 +266,15 @@ export default function About() {
                       <FaMapMarkerAlt /> {office.address}
                     </p>
                   </div>
+                  {office.hours?.length ? (
+                    <div className="about__office-hours">
+                      {office.hours.map((hour) => (
+                        <p key={`${office.name}-${hour}`}>
+                          <FaClock /> {hour}
+                        </p>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
               </Card>
             ))}

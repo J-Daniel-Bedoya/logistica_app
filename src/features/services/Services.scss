@@ -6,21 +6,107 @@
     @include container;
   }
 
-  &__intro {
-    @include section-padding;
-    text-align: center;
+  &__hero {
+    padding: $spacing-xl 0 $spacing-2xl;
+    background:
+      radial-gradient(circle at top right, rgba($secondary, 0.18) 0%, rgba($secondary, 0) 34%),
+      linear-gradient(180deg, rgba($primary, 0.08) 0%, rgba($white, 0) 100%);
+
+    @include respond-to(md) {
+      padding: $spacing-2xl 0 $spacing-3xl;
+    }
+  }
+
+  &__hero-panel {
+    display: grid;
+    gap: $spacing-lg;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border: 1px solid rgba($primary, 0.12);
+    border-radius: $radius-lg;
+    background:
+      linear-gradient(135deg, rgba($primary-dark, 0.98) 0%, rgba($primary, 0.94) 58%, rgba($primary-light, 0.94) 100%);
+    box-shadow: 0 18px 40px rgba($primary-dark, 0.12);
+
+    @include respond-to(lg) {
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      align-items: stretch;
+      gap: $spacing-2xl;
+    }
+  }
+
+  &__hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h1 {
+      margin: 0 0 $spacing-md;
+      color: $white;
+      font-family: $font-heading;
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+  }
+
+  &__hero-subtitle {
+    margin: 0;
+    max-width: 34rem;
+    color: rgba($white, 0.86);
+    font-size: $font-size-md;
+    line-height: 1.75;
+
+    @include respond-to(md) {
+      font-size: $font-size-lg;
+    }
+  }
+
+  &__hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    margin-top: $spacing-xl;
+  }
+
+  &__hero-side {
+    display: grid;
+    gap: $spacing-md;
+  }
+
+  &__hero-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: $spacing-md;
+    align-items: start;
+    padding: $spacing-lg;
+    border-radius: $radius-lg;
+    background: rgba($white, 0.08);
+    border: 1px solid rgba($white, 0.1);
+  }
+
+  &__hero-item-icon {
+    @include flex-center;
+    width: 42px;
+    height: 42px;
+    border-radius: $radius-md;
+    background: rgba($secondary, 0.16);
+    color: $secondary;
+    font-size: $font-size-base;
+  }
+
+  &__hero-item-copy {
+    h2 {
+      margin: 0 0 $spacing-xs;
+      color: $white;
+      font-size: $font-size-base;
+      line-height: 1.3;
+    }
 
     p {
-      max-width: 650px;
-      margin: 0 auto;
-      color: $gray;
+      margin: 0;
+      color: rgba($white, 0.76);
       font-size: $font-size-sm;
-      line-height: 1.8;
-
-      @include respond-to(md) {
-        font-size: $font-size-md;
-        line-height: 1.9;
-      }
+      line-height: 1.6;
     }
   }
 
@@ -140,65 +226,86 @@
   }
 
   &__safety-links {
-    display: grid;
-    gap: 1px;
-    overflow: hidden;
-    border-radius: $radius-lg;
-    background: rgba($primary, 0.16);
-    box-shadow: $shadow-md;
+    @include grid(1, $spacing-lg);
 
-    @include respond-to(md) {
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
+  &__safety-card {
+    height: 100%;
+  }
+
   &__safety-link {
     display: flex;
-    min-height: 168px;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: $spacing-xl $spacing-lg;
-    text-align: center;
-    background: linear-gradient(180deg, #1d2bf0 0%, #1724d6 100%);
-    transition:
-      background-color $transition-fast,
-      transform $transition-fast;
+    align-items: flex-start;
+    gap: $spacing-md;
+    height: 100%;
+  }
 
-    &:hover {
-      transform: translateY(-2px);
-    }
+  &__safety-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 54px;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid rgba($primary, 0.08);
+  }
+
+  &__safety-logo {
+    display: block;
+    max-width: 160px;
+    max-height: 36px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__safety-tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0.25rem 0.625rem;
+    border-radius: $radius-md;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    background: rgba($primary, 0.06);
+    color: $primary;
 
     &--qustodio {
-      .services__safety-brand {
-        color: #53d3a8;
-      }
+      background: rgba(#53d3a8, 0.12);
+      color: #1f7f63;
     }
 
     &--securekids {
-      .services__safety-brand {
-        color: $white;
-      }
+      background: rgba($secondary, 0.12);
+      color: $secondary;
     }
 
     &--kidoz {
-      .services__safety-brand {
-        color: #111827;
-      }
+      background: rgba($primary, 0.1);
+      color: $primary;
     }
   }
 
   &__safety-brand {
-    margin-bottom: $spacing-sm;
+    margin: 0;
+    color: $primary;
     font-family: $font-heading;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    line-height: 1;
-    letter-spacing: 0.01em;
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    line-height: 1.2;
   }
 
   &__safety-description {
-    max-width: 26ch;
-    color: rgba($white, 0.82);
+    margin: 0 0 auto;
+    color: $gray;
     font-size: $font-size-sm;
     line-height: 1.6;
   }

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { FaDownload, FaExternalLinkAlt, FaPlay, FaShieldAlt } from 'react-icons/fa';
-import PageBanner from '@/shared/components/sections/PageBanner';
 import SectionTitle from '@/shared/components/ui/SectionTitle';
 import Card from '@/shared/components/ui/Card';
 import Button from '@/shared/components/ui/Button';
@@ -23,22 +22,48 @@ const parentalControlLinks = [
     url: 'https://www.qustodio.com/en/',
     description: 'Control parental y filtros de contenido para acompañamiento familiar.',
     accent: 'qustodio',
+    logo: '/assets/uploads/2024/07/QustodioLogo_Regular_Green_RGB.png',
+    label: 'Control parental',
+    cta: 'Conocer Qustodio',
   },
   {
     name: 'SecureKids',
     url: 'https://securekids.es/en/features/online-security/',
     description: 'Herramientas para supervisar dispositivos y reforzar navegación segura.',
     accent: 'securekids',
+    logo: '/assets/uploads/2024/07/segurekids.png',
+    label: 'Supervisión digital',
+    cta: 'Conocer SecureKids',
   },
   {
     name: 'KIDOZ',
     url: 'https://www.kidoz.net/kidoz-os',
     description: 'Entorno infantil con controles y contenidos orientados a niños y niñas.',
     accent: 'kidoz',
+    logo: '/assets/uploads/2024/07/kidoz_logo_dark.png',
+    label: 'Entorno para niños',
+    cta: 'Conocer KIDOZ',
   },
 ] as const;
 
 const videoCategories = [...new Set(educationalVideos.map((video) => video.category))];
+const heroItems = [
+  {
+    title: 'Recursos útiles',
+    description: 'Guías, instructivos y enlaces listos para consulta.',
+    icon: FaDownload,
+  },
+  {
+    title: 'Navegación segura',
+    description: 'Herramientas de control parental para el hogar.',
+    icon: FaShieldAlt,
+  },
+  {
+    title: 'Aprendizaje visual',
+    description: 'Videos prácticos sobre internet, seguridad y TDT.',
+    icon: FaPlay,
+  },
+] as const;
 
 export default function Services() {
   const [activeCategory, setActiveCategory] = useState(videoCategories[0]);
@@ -47,23 +72,47 @@ export default function Services() {
 
   return (
     <div className="services">
-      <PageBanner
-        title="Tips de Internet"
-        subtitle="Optimiza tu conexión: consejos prácticos para el uso de internet"
-      />
-
-      <section className="services__intro">
+      <section className="services__hero">
         <div className="services__container">
-          <p>
-            Descubre tips y trucos para aprovechar al máximo tu tiempo en la web.
-            Aprende sobre seguridad y protección en línea, con consejos específicos para
-            mantener a los niños y niñas seguros mientras navegan. Esta guía te ofrece
-            todo lo necesario para una experiencia en internet segura y eficiente.
-          </p>
+          <div className="services__hero-panel">
+            <div className="services__hero-copy">
+              <h1>Tips de Internet</h1>
+              <p className="services__hero-subtitle">
+                Consejos prácticos, recursos útiles y herramientas de seguridad para que
+                aproveches mejor tu conexión en casa.
+              </p>
+              <div className="services__hero-actions">
+                <Button variant="primary" href="#servicios-recursos">
+                  Ver recursos
+                </Button>
+                <Button variant="outline" href="#servicios-control-parental">
+                  Control parental
+                </Button>
+              </div>
+            </div>
+
+            <div className="services__hero-side" aria-label="Contenido destacado">
+              {heroItems.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <article key={item.title} className="services__hero-item">
+                    <div className="services__hero-item-icon">
+                      <Icon />
+                    </div>
+                    <div className="services__hero-item-copy">
+                      <h2>{item.title}</h2>
+                      <p>{item.description}</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="services__resources">
+      <section className="services__resources" id="servicios-recursos">
         <div className="services__container">
           <SectionTitle title="Recursos" centered />
           <div className="services__resources-grid">
@@ -86,7 +135,10 @@ export default function Services() {
               <div className="services__resource">
                 <FaShieldAlt className="services__resource-icon" />
                 <h3>Control Parental: Funciones y herramientas</h3>
-                <p>Aquí encontrarás cómo activar el control parental en diferentes plataformas y dispositivos.</p>
+                <p>
+                  Aquí encontrarás cómo activar el control parental en diferentes plataformas y
+                  dispositivos.
+                </p>
                 <Button
                   variant="outline"
                   size="sm"
@@ -101,7 +153,10 @@ export default function Services() {
               <div className="services__resource">
                 <FaExternalLinkAlt className="services__resource-icon" />
                 <h3>Te Protejo Colombia</h3>
-                <p>Línea virtual de reporte para la protección de infancia y adolescencia en Colombia.</p>
+                <p>
+                  Línea virtual de reporte para la protección de infancia y adolescencia en
+                  Colombia.
+                </p>
                 <Button variant="primary" size="sm" href="https://teprotejocolombia.org/" external>
                   WWW.teprotejo.org
                 </Button>
@@ -155,28 +210,38 @@ export default function Services() {
         </div>
       </section>
 
-      <section className="services__safety">
+      <section className="services__safety" id="servicios-control-parental">
         <div className="services__container">
+          <SectionTitle
+            title="Herramientas de control parental"
+            subtitle="Opciones recomendadas para acompañar la navegación de niños, niñas y adolescentes."
+            centered
+          />
+
           <div className="services__safety-intro">
             <p>
-              Logística Integral Satelital está en pro de la prevención del acceso a la
-              pornografía infantil. En los siguientes links encontrarás herramientas para
-              bloquear dichas páginas y reforzar una navegación más segura en casa.
+              Encuentra herramientas útiles para administrar contenidos, supervisar dispositivos y
+              crear entornos digitales más seguros en casa.
             </p>
           </div>
 
           <div className="services__safety-links" aria-label="Herramientas de control parental">
             {parentalControlLinks.map((item) => (
-              <a
-                key={item.name}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`services__safety-link services__safety-link--${item.accent}`}
-              >
-                <span className="services__safety-brand">{item.name}</span>
-                <span className="services__safety-description">{item.description}</span>
-              </a>
+              <Card key={item.name} className="services__safety-card">
+                <div className="services__safety-link">
+                  <div className="services__safety-logo-wrap">
+                    <img src={item.logo} alt={item.name} className="services__safety-logo" />
+                  </div>
+                  <span className={`services__safety-tag services__safety-tag--${item.accent}`}>
+                    {item.label}
+                  </span>
+                  <h3 className="services__safety-brand">{item.name}</h3>
+                  <p className="services__safety-description">{item.description}</p>
+                  <Button variant="outline" size="sm" href={item.url} external>
+                    {item.cta}
+                  </Button>
+                </div>
+              </Card>
             ))}
           </div>
         </div>

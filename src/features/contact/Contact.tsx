@@ -130,7 +130,7 @@ export default function Contact() {
 
               <div className="contact__map">
                 <iframe
-                  src="https://www.google.com/maps/d/embed?mid=1oBawe6m5ziGul0G7Zsr3vLcxsfY7jx05"
+                  src="https://www.google.com/maps/d/embed?mid=1vC9KboiNEFPBEYduiFBV1AIMFB6NJ1Y"
                   title="Mapa de ubicación"
                   loading="lazy"
                 />

@@ -8,7 +8,6 @@ import { contactInfo } from '@/features/contact/contact.data';
 import './Plans.scss';
 
 const locations = [...new Set(plans.map((plan) => plan.location))];
-const tariffsFileHref = '/TARIFAS%202026.xlsx';
 
 const typeIcons: Record<string, React.ReactNode> = {
   fiber: <FaWifi />,
@@ -33,24 +32,16 @@ export default function Plans() {
 
       <section className="plans__content">
         <div className="plans__container">
-          <div className="plans__header">
-            <div className="plans__summary">
-              <p className="plans__intro">
-                Consulta las tarifas vigentes cargadas desde el archivo oficial de LIS. En cada
-                municipio verás mensualidades, cargos de instalación y referencias de televisión
-                cuando apliquen.
-              </p>
-              <p className="plans__legend">
-                Los valores de instalación corresponden a un cobro único. Si necesitas confirmar
-                cobertura o promociones vigentes, puedes descargar la tabla completa o escribirnos
-                por WhatsApp.
-              </p>
-            </div>
-            <div className="plans__actions">
-              <Button variant="outline" size="sm" href={tariffsFileHref}>
-                Descargar tarifas 2026
-              </Button>
-            </div>
+          <div className="plans__intro-block">
+            <p className="plans__intro">
+              Elige el plan ideal para tu hogar o negocio y disfruta una conexión estable y
+              rápida.
+            </p>
+            <p className="plans__legend">
+              Contamos con opciones de internet, televisión y combos pensados para diferentes
+              necesidades. Si quieres confirmar cobertura o una promoción vigente, escríbenos por
+              WhatsApp.
+            </p>
           </div>
 
           <div className="plans__tabs">

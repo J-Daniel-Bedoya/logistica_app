@@ -1,7 +1,7 @@
 import type { ContactInfo, Office } from '@/shared/types';
 
 export const contactInfo: ContactInfo = {
-  phone: '604 854 15 05',
+  phone: '322 651 2970',
   phone2: '310 593 0440',
   email: 'lis.sopetran2018@gmail.com',
   address: 'Carrera 13 # 9-45, Sopetrán, Antioquia',
@@ -24,7 +24,7 @@ export const contactInfo: ContactInfo = {
 export const paymentPoints: Office[] = [
   {
     name: 'Sopetrán',
-    phone: '604 854 15 05 - 310 593 0440',
+    phone: '322 651 2970 - 310 593 0440',
     address: 'Carrera 13 # 9-45, 2do piso',
     hours: [
       'Lunes a viernes: 7:00 AM a 12:00 PM y 2:00 PM a 5:00 PM.',
@@ -34,7 +34,7 @@ export const paymentPoints: Office[] = [
   },
   {
     name: 'San Jerónimo',
-    phone: '604 858 35 85 - 322 770 8319',
+    phone: '322 651 2970 - 322 770 8319',
     address: 'Carrera 21 # 11-53, 2do piso',
     hours: [
       'Lunes a viernes: 7:00 AM a 12:00 PM y 2:00 PM a 5:00 PM.',

@@ -10,47 +10,39 @@
     @include section-padding;
   }
 
-  &__header {
-    display: grid;
-    gap: $spacing-md;
-    margin-bottom: $spacing-xl;
+  &__intro-block {
+    max-width: 860px;
+    margin: 0 auto $spacing-xl;
+    text-align: center;
 
     @include respond-to(md) {
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: start;
-      gap: $spacing-lg;
       margin-bottom: $spacing-2xl;
     }
   }
 
-  &__summary {
-    padding: $spacing-lg;
-    border: 1px solid rgba($primary, 0.12);
-    border-radius: $radius-lg;
-    background: $off-white;
-  }
-
   &__intro {
     margin: 0;
-    color: $gray;
-    font-size: $font-size-sm;
-    line-height: 1.8;
+    color: $primary;
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+    line-height: 1.7;
 
     @include respond-to(md) {
-      font-size: $font-size-md;
+      font-size: $font-size-xl;
+      line-height: 1.6;
     }
   }
 
   &__legend {
-    margin-top: $spacing-sm;
-    color: $dark-gray;
+    margin: $spacing-sm auto 0;
+    max-width: 760px;
+    color: $gray;
     font-size: $font-size-sm;
     line-height: 1.7;
-  }
 
-  &__actions {
-    display: flex;
-    align-items: center;
+    @include respond-to(md) {
+      font-size: $font-size-base;
+    }
   }
 
   &__tabs {
